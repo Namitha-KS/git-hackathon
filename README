@@ -20,4 +20,150 @@ Task
 Document all the commands that you used this task and add to README file
 
 
-    
+PS D:\8086> git clone https://github.com/Namitha-KS/git-hackathon.git
+Cloning into 'git-hackathon'...
+remote: Enumerating objects: 23, done.
+remote: Counting objects: 100% (8/8), done.
+remote: Compressing objects: 100% (5/5), done.
+remote: Total 23 (delta 5), reused 3 (delta 3), pack-reused 15
+Receiving objects: 100% (23/23), 7.20 KiB | 7.20 MiB/s, done.
+Resolving deltas: 100% (5/5), done.
+
+PS D:\8086> cd .\git-hackathon\
+
+PS D:\8086\git-hackathon> code .
+
+PS D:\8086\git-hackathon> git checkout -b second
+Switched to a new branch 'second'
+
+PS D:\8086\git-hackathon> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\8086\git-hackathon> git checkout -b third
+Switched to a new branch 'third'
+
+PS D:\8086\git-hackathon> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\8086\git-hackathon> git merge second
+Updating dcdb7cf..c8d945d
+Fast-forward
+ namitha.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 namitha.txt
+
+PS D:\8086\git-hackathon> git merge third
+Merge made by the 'ort' strategy.
+ default.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+PS D:\8086\git-hackathon> git push
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (2/2), 287 bytes | 287.00 KiB/s, done.
+Total 2 (delta 1), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/Namitha-KS/git-hackathon.git
+   dcdb7cf..dd6c89e  main -> main
+
+PS D:\8086\git-hackathon> git checkout second
+Switched to branch 'second'
+Your branch is up to date with 'origin/second'.
+
+PS D:\8086\git-hackathon> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\8086\git-hackathon> git merge second
+Auto-merging default.txt
+CONFLICT (content): Merge conflict in default.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+PS D:\8086\git-hackathon> git merge second
+Already up to date.
+
+PS D:\8086\git-hackathon> git push
+Everything up-to-date
+
+PS D:\8086\git-hackathon> git checkout -b fourth
+Switched to a new branch 'fourth'
+
+PS D:\8086\git-hackathon> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\8086\git-hackathon> git checkout fourth
+Switched to branch 'fourth'
+Your branch is up to date with 'origin/fourth'.
+
+PS D:\8086\git-hackathon> git log
+commit 3bacca392e150c51877f3f5e529bb485846301d1 (HEAD -> fourth, origin/fourth)
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:39:43 2024 +0530
+
+    modified namitha.txt in fourth
+
+commit b93422eb3f79305292f0605118966efc8738032a (origin/main, origin/HEAD, main)
+Merge: dd6c89e 2a39612
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:37:45 2024 +0530
+
+    Merge branch 'second' resolved conflicts
+
+commit 2a3961216148af893e7d3001f635c43e782baf5f (origin/second, second)
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:36:42 2024 +0530
+
+    appending name in second
+
+commit dd6c89ef74e7690da00509805dd1e37036268b6a
+Merge: c8d945d 0b07923
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:34:36 2024 +0530
+
+    Merge branch 'third'
+
+commit 0b07923b1df05ecf6de7b6e3acb201a6ce8e16d3 (origin/third, third)
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:34:05 2024 +0530
+
+    appending hello sethu in third
+
+commit c8d945ddaebe3fb9a977b9ea035544253aa53404
+Author: Namitha-S <namigowri2006@gmail.com>
+Date:   Thu Feb 22 17:31:50 2024 +0530
+
+PS D:\8086\git-hackathon> git cherry-pick b93422eb3f79305292f0605118966efc8738032a
+error: commit b93422eb3f79305292f0605118966efc8738032a is a merge but no -m option was given.
+fatal: cherry-pick failed
+
+PS D:\8086\git-hackathon> git cherry-pick 2a3961216148af893e7d3001f635c43e782baf5f
+Auto-merging default.txt
+CONFLICT (content): Merge conflict in default.txt
+error: could not apply 2a39612... appending name in second
+hint: After resolving the conflicts, mark them with
+hint: "git add/rm <pathspec>", then run
+hint: "git cherry-pick --continue".
+hint: You can instead skip this commit with "git cherry-pick --skip".
+hint: To abort and get back to the state before "git cherry-pick",
+hint: run "git cherry-pick --abort".
+
+PS D:\8086\git-hackathon> git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+PS D:\8086\git-hackathon> git merge fourth
+Updating b93422e..dbe81f2
+Fast-forward
+ default.txt | 1 -
+ namitha.txt | 2 +-
+ 2 files changed, 1 insertion(+), 2 deletions(-)
+
+PS D:\8086\git-hackathon> git push
+Total 0 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/Namitha-KS/git-hackathon.git
+   b93422e..dbe81f2  main -> main
